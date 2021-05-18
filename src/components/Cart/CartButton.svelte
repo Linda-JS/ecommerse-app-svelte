@@ -1,5 +1,9 @@
 <script>
   import globalStore from "../../stores/globalStore";
+  import cart from "../../stores/cart";
+  $: total = $cart.reduce((acc, curr) => {
+    return (acc += curr.amount);
+  }, 0);
 </script>
 
 <!-- cart toggle -->
@@ -13,5 +17,5 @@
   >
     <i class="fas fa-cart-plus" />
   </button>
-  <span class="btn-cart-items">10</span>
+  <span class="btn-cart-items">{total}</span>
 </div>
